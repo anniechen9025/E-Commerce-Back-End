@@ -11,10 +11,10 @@ router.get('/', async (req, res) => {
     const productData = await Product.findAll({
       include:[
         Category,
-        // {
-        //   model: Tag, 
-        //   through: ProductTag,
-        // }
+        {
+          model: Tag, 
+          through: ProductTag,
+        }
       ]
     });
     res.status(200).json(productData);
@@ -34,10 +34,10 @@ router.get('/:id', async (req, res) => {
       },
       include:[
         Category,
-        // {
-        //   model: Tag, 
-        //   through: ProductTag,
-        // }
+        {
+          model: Tag, 
+          through: ProductTag,
+        }
       ]
     });
     if (!productData) {

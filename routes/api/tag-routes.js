@@ -9,10 +9,10 @@ router.get('/', async (req, res) => {
   try {
     const tagData = await Tag.findAll({
       include:[        
-        // {
-        //   model: Product, 
-        //   through: ProductTag,
-        // }
+        {
+          model: Product, 
+          through: ProductTag,
+        }
       ]
     });
     res.status(200).json(tagData);
@@ -30,12 +30,12 @@ router.get('/:id', async (req, res) => {
         id:req.params.id
       },
       include:[        
-        // {
-        //   model: Product, 
-        //   through: ProductTag,
-        // }
+        {
+          model: Product, 
+          through: ProductTag,
+        }
       ]
-    });;
+    });
     if (!tagData) {
       res.status(404).json({ message: 'No tag found with this id!' });
       return;
